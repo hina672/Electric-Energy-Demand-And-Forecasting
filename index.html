@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnergiX - Smart Energy Insights</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+
+    <style>
+        :root {
+            --primary-color: #3d5a80;
+            --secondary-color: #82b4ff;
+            --accent-blue: #4285f4;
+            --white: #ffffff;
+            --light-gray: #f5f7fa;
+            --border-color: #e1e5eb;
+            --text-dark: #000080; /* Dark navy for dropdown text */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        body {
+            background-color: var(--light-gray);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            position: relative;
+            padding: 0.5rem 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-item.active {
+            color: var(--accent-blue);
+        }
+
+        .login-nav-btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            background-color: transparent;
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .login-nav-btn:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .dropdown-panel {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            background-color: var(--white);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: top 0.3s ease-in-out;
+            z-index: 999;
+            padding: 3rem 5%;
+            opacity: 0;
+            visibility: hidden;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .dropdown-panel h2 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .dropdown-panel p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .nav-item:hover .dropdown-panel {
+            top: 70px;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dropdown-panel::before {
+            content: '';
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-item:hover .dropdown-panel::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .hero {
+            margin-top: 70px;
+            padding: 5rem 5%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 4rem;
+            background-color: var(--white);
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-content {
+            flex: 0 1 50%;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .hero-content h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .login-btn, .signup-btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+        }
+
+        .login-btn {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .signup-btn {
+            background-color: var(--accent-blue);
+            color: var(--white);
+            border: none;
+        }
+
+        .login-btn:hover, .signup-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-image-container {
+            flex: 0 1 50%;
+            max-width: 600px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            opacity: 0.85;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            animation: fadeInRight 1s ease-out, float 6s ease-in-out infinite;
+        }
+
+        .features {
+            padding: 4rem 5%;
+            background-color: var(--light-gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 10px;
+            background-color: var(--white);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.2s; }
+        .feature-card:nth-child(2) { animation-delay: 0.4s; }
+        .feature-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 3rem 5%;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-content, 
+            .hero-image-container {
+                flex: 0 1 100%;
+                max-width: 100%;
+            }
+
+            .auth-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <i class="fas fa-bolt"></i>
+            EnergiX
+        </div>
+        <div class="nav-right">
+            <div class="nav-links">
+                <a href="#home" class="nav-item active">Home</a>
+                <div class="nav-item">
+                    About
+                    <div class="dropdown-panel">
+                        <h2>About Us</h2>
+                        <p>
+                            Welcome to EnergiX – a cutting-edge platform designed to provide smart energy insights and advanced forecasting for efficient energy management. Our project is the culmination of a dedicated effort by a team of passionate computer science students, blending state-of-the-art machine learning techniques with user-friendly web design to transform raw energy data into actionable intelligence.
+                        </p>
+                        <p>
+                            At EnergiX, we believe that understanding and optimizing energy consumption is crucial for sustainability and cost efficiency. Our system leverages innovative forecasting models, including Facebook Prophet and Long Short-Term Memory (LSTM) neural networks, to deliver accurate daily and monthly predictions. These insights empower households, businesses, and institutions to make informed decisions, reduce waste, and manage energy more effectively.
+                        </p>
+                        <p>
+                            Our multidisciplinary team combines expertise in data science, machine learning, and web development to build solutions that are both robust and scalable. We are committed to continuous improvement and welcome feedback to help us refine our platform and meet the evolving needs of energy management in today’s dynamic environment.
+                        </p>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    Contact Us
+                    <div class="dropdown-panel">
+                        <h2>Contact Us</h2>
+                        <p>
+                            Thank you for your interest in EnergiX! We are here to help you with any questions, feedback, or support you may need regarding our energy insights platform.
+                        </p>
+                        <p>
+                            <strong>Email:</strong> <a href="mailto:energixforecast@gmail.com">energixforecast@gmail.com</a>
+                        </p>
+                        <p>
+                            <strong>Phone:</strong> +1 (123) 456-7890
+                        </p>
+                        <p>
+                            Our dedicated team is committed to ensuring you have the best experience. Feel free to reach out with any inquiries or suggestions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <a href="{{ url_for('signin') }}" class="login-nav-btn">Login</a>
+        </div>
+    </nav>
+        
+    <section class="hero">
+        <div class="hero-content">
+            <h1>EnergiX</h1>
+            <h2>Smart Energy Insights!</h2>
+            <p>Transform your energy consumption with advanced AI-powered forecasting. Get detailed insights, predict usage patterns, and optimize your energy efficiency like never before.</p>
+            <div class="auth-buttons">
+                <a href="{{ url_for('signin') }}" class="login-btn">Login</a>
+                <a href="{{ url_for('signup') }}" class="signup-btn">SignUp</a>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="{{ url_for('static', filename='images/signpageimg.png') }}" alt="Energy Analytics Dashboard" class="hero-image">
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Accurate Predictions</h3>
+                <p>Advanced AI algorithms to forecast your energy demand with precision.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Smart Insights</h3>
+                <p>Detailed analytics and recommendations for optimal energy usage.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-leaf"></i>
+                <h3>Eco-Friendly</h3>
+                <p>Reduce your carbon footprint with intelligent energy management.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
