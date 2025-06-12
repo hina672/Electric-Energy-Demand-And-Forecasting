@@ -8,11 +8,15 @@ Our solution? A Flask-based web application that uses Prophet for long-term fore
 Working of Our Project:
 
 1st step. User uploads energy consumption dataset
+
 2nd step. Data preprocessing & visualization
+
 3rd step. ML Models applied for forecasting
 . LSTM for short-term prediction
 . Prophet for long-term forecasting
+
 4th step. Performance evaluated using MAE, MSE, RMSE
+
 5th step. Forecasted results visualized using interactive graphs.
 
 
