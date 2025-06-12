@@ -23,73 +23,73 @@ Working of Our Project:
 
 ### 📸 Working Demo – Step-by-Step Screenshots
 
-#### 🔢 1. User Uploads Energy Consumption Dataset
+#### 🔢 1. 
 
 ![Step 1](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/1.jpg)
 
 ---
 
-#### 📊 2. Dataset is Displayed with Initial Visualization
+#### 📊 2.
 
 ![Step 2](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/2.jpg)
 
 ---
 
-#### 🧹 3. Data Preprocessing Begins
+#### 🧹 3. 
 
 ![Step 3](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/3.jpg)
 
 ---
 
-#### 📈 4. Prophet Model Forecasts Long-Term Trends
+#### 📈 4. 
 
 ![Step 4](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/4.jpg)
 
 ---
 
-#### 🔁 5. LSTM Model for Short-Term Forecast
+#### 🔁 5.
 
 ![Step 5](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/5.jpg)
 
 ---
 
-#### 📐 6. Evaluation: MAE, RMSE, and Relative Error
+#### 📐 6. 
 
 ![Step 6](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/6.jpg)
 
 ---
 
-#### 📉 7. Visualization of Actual vs Predicted Values
+#### 📉 7. 
 
 ![Step 7](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/7.jpg)
 
 ---
 
-#### 🗓️ 8. Multi-Seasonal Forecasting Display
+#### 🗓️ 8. 
 
 ![Step 8](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/8.jpg)
 
 ---
 
-#### 🔐 9. Secure Login/Signup for Users
+#### 🔐 9.
 
 ![Step 9](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/9.jpg)
 
 ---
 
-#### 📋 10. Upload Dataset Interface
+#### 📋 10. 
 
 ![Step 10](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/10.jpg)
 
 ---
 
-#### 📂 11. Dataset Preview After Upload
+#### 📂 11. 
 
 ![Step 11](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/11.jpg)
 
 ---
 
-#### 🧾 12. Summary of Forecasted Results
+#### 🧾 12.
 
 ![Step 12](https://github.com/hina672/Electric-Energy-Demand-And-Forecasting/raw/main/screenshots/12.jpg)
 
